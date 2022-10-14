@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp">
+
+    <TextView
+        android:id="@+id/activity_title"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="Activity"
+        android:fontFamily="sans-serif-black"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="Parent" />
+
+    <TextView
+        android:id="@+id/day_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Date"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_title" />
+
+    <TextView
+        android:id="@+id/time_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-light"
+        android:text="11:00 am"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/day_name" />
+
+    <ImageView
+        android:id="@+id/clock"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/clock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/time_entry"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/duration_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-light"
+        android:text="60"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/clock"
+        app:layout_constraintTop_toBottomOf="@+id/time_entry"
+        />
+
+    <TextView
+        android:id="@+id/min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-light"
+        android:text="min"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/duration_entry"
+        app:layout_constraintTop_toBottomOf="@+id/time_entry"
+        />
+
+    <ImageView
+        android:id="@+id/calories"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/clock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/clock"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/calorie_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-light"
+        android:text="90"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/calories"
+        app:layout_constraintTop_toBottomOf="@+id/duration_entry"
+        />
+
+    <TextView
+        android:id="@+id/cal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="sans-serif-light"
+        android:text="cal"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/calorie_entry"
+        app:layout_constraintTop_toBottomOf="@+id/duration_entry"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
