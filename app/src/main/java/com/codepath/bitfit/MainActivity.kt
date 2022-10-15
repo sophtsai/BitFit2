@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         val exerciseRecyclerView = findViewById<RecyclerView>(R.id.menu_recycler_view)
         val addExerciseBtn = findViewById<Button>(R.id.add_button)
+        val removeAllBtn = findViewById<Button>(R.id.remove_button)
         exerciseRecyclerView.layoutManager = LinearLayoutManager(this).also {
             val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
             exerciseRecyclerView.addItemDecoration(dividerItemDecoration)
@@ -47,6 +49,12 @@ class MainActivity : AppCompatActivity() {
                     exercise.addAll(mappedList)
                     exerciseAdapter.notifyDataSetChanged()
                 }
+            }
+        }
+
+        removeAllBtn.setOnClickListener {
+            lifecycleScope.launch (IO) {
+                (application as ExerciseApplication).db.exerciseDao().deleteAll()
             }
         }
     }
