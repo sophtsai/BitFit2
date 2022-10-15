@@ -10,25 +10,26 @@
         android:id="@+id/menu_recycler_view"
         android:layout_width="411dp"
         android:layout_height="631dp"
-        android:layout_above="@+id/add_button"
         android:layout_marginTop="8dp"
-        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/add_button"/>
+        app:layout_constraintBottom_toTopOf="@+id/add_button"
+        app:layout_constraintVertical_bias="0.0"
+        />
 
     <Button
         android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Button"
+        android:layout_width="189dp"
+        android:layout_height="59dp"
+        android:text="Add Activity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/menu_recycler_view"/>
-
+        app:layout_constraintTop_toBottomOf="@id/menu_recycler_view"
+        app:layout_constraintVertical_bias="0.919" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

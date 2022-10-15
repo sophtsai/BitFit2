@@ -20,7 +20,9 @@ class ExerciseAdapter(private val context: Context, private val exercises: Mutab
         holder.bind(exercise)
     }
 
-    override fun getItemCount() = exercises.size
+    override fun getItemCount(): Int {
+        return exercises.size
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

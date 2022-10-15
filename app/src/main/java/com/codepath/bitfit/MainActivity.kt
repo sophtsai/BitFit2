@@ -1,5 +1,6 @@
 package com.codepath.bitfit
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -7,12 +8,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private val exercise = mutableListOf<ExerciseEntity>()
-    private lateinit var exerciseRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +19,18 @@ class MainActivity : AppCompatActivity() {
 
         val exerciseRecyclerView = findViewById<RecyclerView>(R.id.menu_recycler_view)
         val addExerciseBtn = findViewById<Button>(R.id.add_button)
+        exerciseRecyclerView.layoutManager = LinearLayoutManager(this).also {
+            val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
+            exerciseRecyclerView.addItemDecoration(dividerItemDecoration)
+        }
         val exerciseAdapter = ExerciseAdapter(this, exercise)
         exerciseRecyclerView.adapter = exerciseAdapter
+
+        addExerciseBtn.setOnClickListener {
+            Intent(this, DetailActivity::class.java).also {
+                startActivity(it)
+            }
+        }
 
         lifecycleScope.launch {
             (application as ExerciseApplication).db.exerciseDao().getAll().collect { databaseList ->
@@ -39,11 +48,6 @@ class MainActivity : AppCompatActivity() {
                     exerciseAdapter.notifyDataSetChanged()
                 }
             }
-        }
-
-        exerciseRecyclerView.layoutManager = LinearLayoutManager(this).also {
-            val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
-            exerciseRecyclerView.addItemDecoration(dividerItemDecoration)
         }
     }
 }

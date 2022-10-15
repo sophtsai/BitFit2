@@ -1,10 +1,15 @@
 package com.codepath.bitfit
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
+private const val TAG = "DetailActivity"
 class DetailActivity : AppCompatActivity() {
     private lateinit var nameEditText: EditText
     private lateinit var dateEditText: EditText
@@ -16,19 +21,22 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        // Find the views for the screen
-        nameEditText = findViewById(R.id.mediaImage)
-        dateEditText = findViewById(R.id.mediaTitle)
-        startEditText = findViewById(R.id.mediaByline)
-        durationEditText = findViewById(R.id.mediaAbstract)
+        val logExerciseBtn = findViewById<Button>(R.id.save_button)
+        logExerciseBtn.setOnClickListener {
+            nameEditText = findViewById(R.id.edit_activity_name)
+            dateEditText = findViewById(R.id.edit_date)
+            startEditText = findViewById(R.id.edit_start_time)
+            durationEditText = findViewById(R.id.edit_duration)
+            calorieEditText = findViewById(R.id.edit_calories_burned)
 
-        // Get the extra from the Intent
-        val article = intent.getSerializableExtra(ARTICLE_EXTRA) as DisplayArticle
-
-        // Set the title, byline, and abstract information from the article
-        dateEditText.text = article.headline
-        startEditText.text = article.byline
-        durationEditText.text = article.abstract
-
+            lifecycleScope.launch(IO){
+                (application as ExerciseApplication).db.exerciseDao().insert(
+                    ExerciseEntity(
+                        name = nameEditText.text.toString(), date = dateEditText.text.toString(), time = startEditText.text.toString(),
+                        duration = durationEditText.text.toString().toInt(), calories =  calorieEditText.text.toString().toInt())
+                )
+            }
+            super.finish()
+        }
     }
 }
