@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
@@ -35,16 +36,16 @@ class LogFragment : Fragment() {
         exerciseAdapter = ExerciseAdapter(view.context, exercises)
         exerciseRecyclerView.adapter = exerciseAdapter
 
-        //val exerciseRecyclerView = findViewById<RecyclerView>(R.id.menu_recycler_view)
+        val exerciseRecyclerView = view.findViewById<RecyclerView>(R.id.menu_recycler_view)
         val addExerciseBtn = view.findViewById<Button>(R.id.add_button)
         val removeAllBtn = view.findViewById<Button>(R.id.remove_button)
-        /*exerciseRecyclerView.layoutManager = LinearLayoutManager(this).also {
-            val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
+        exerciseRecyclerView.layoutManager = LinearLayoutManager(context).also {
+            val dividerItemDecoration = DividerItemDecoration(context, it.orientation)
             exerciseRecyclerView.addItemDecoration(dividerItemDecoration)
-        }*/
+        }
 
         addExerciseBtn.setOnClickListener {
-            Intent(this, DetailActivity::class.java).also {
+            Intent(context, DetailActivity::class.java).also {
                 startActivity(it)
             }
         }

@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        bottomNavigationView.selectedItemId = R.id.nav_log
     }
 
     private fun replaceFragment(fragment: Fragment) {
